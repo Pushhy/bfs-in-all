@@ -41,6 +41,12 @@ deque<State> q;
 //保存搜索过的路径
 vector<State> visitedStates;
 
+//标记状态为已访问
+void BookState(const State &state)
+{
+	visitedStates.push_back(state);
+}
+
 //判断当前状态是否合法
 bool IsStateLegal(const State &state)
 {
@@ -89,7 +95,7 @@ void bfs(State init)
 		}
 
 		//标记当前状态为已访问
-		visitedStates.push_back(current);
+		BookState(current);
 
 		//达到目标状态
 		if (IsTargetState(current))
